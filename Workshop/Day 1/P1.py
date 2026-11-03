@@ -1,18 +1,28 @@
-import os 
+
+import os
 import time
 import json
+from pathlib import Path
 
-from dotenv import load_dotenv #.env
+from dotenv import load_dotenv
 from google import genai
-from google.genai import types 
+from google.genai import types
 
-load_dotenv()
+# Load .env from project root
+env_path = Path(__file__).resolve().parents[2] / ".env"
+load_dotenv(env_path)
+
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+print("ENV FILE:", env_path)
+print("ENV EXISTS:", env_path.exists())
+print("API KEY LOADED:", bool(GEMINI_API_KEY))
 
 if not GEMINI_API_KEY:
     raise EnvironmentError("GEMINI_API_KEY not found")
 
 client = genai.Client(api_key=GEMINI_API_KEY)
+
 
 ping = client.models.generate_content(
     model="gemini-3.6-flash",
