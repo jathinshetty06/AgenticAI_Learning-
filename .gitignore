@@ -1,0 +1,26 @@
+
+# API keys
+.env
+.env.*
+!.env.example
+
+# Python virtual environments
+.venv/
+venv/
+**/.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Vector databases
+**/chroma_db/
+*.index
+*.pkl
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
